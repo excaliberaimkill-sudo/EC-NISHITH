@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC - NISHITH </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      text-align: center;
+      background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjduc3ppb2duZ2wwNGJjNWl3M3pnNG8yb3h6OTVmOHRkZWNuMDd0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GC7C2Fi902BDG/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism effect */
+    .glass-box {
+      margin: 100px auto;
+      padding: 30px;
+      max-width: 500px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Logo */
+    .logo img {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #7fff00;
+      margin: 10px 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: #00e5ff;
+      margin-bottom: 30px;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    .profile-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .profile-card .info {
+      text-align: left;
+    }
+
+    .profile-card .info h4 {
+      margin: 0;
+      color: #00ffff;
+    }
+
+    .profile-card .info p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* Social icons */
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 2rem;
+      color: #00ff99;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #00e5ff;
+      transform: scale(1.2);
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #00e5ff;
+      border-radius: 50%;
+      animation: float 10s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: rgba(0,0,0,0.6);
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .music-btn i {
+      font-size: 1.4rem;
+      color: #00e5ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Music button -->
+  <div class="music-btn" onclick="toggleMusic()">
+    <i class="fa-solid fa-volume-high"></i>
+  </div>
+
+  <!-- Main Glass Box -->
+  <div class="glass-box">
+    <div class="logo">
+      <img src="https://files.catbox.moe/k3xyfr.webp" alt="logo">
+    </div>
+    <h1>EC - NISHITH</h1>
+    <h3>PANEL MAKER AND SELLER</h3>
+
+    <!-- Profile card -->
+    <div class="profile-card">
+      <img src="https://files.catbox.moe/k3xyfr.webp" alt="profile">
+      <div class="info">
+        <h4>@EXCALIBER CHEATS</h4>
+        <p>last seen 1 hours ago</p>
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://discord.gg/xURJ9d4vvp"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://www.youtube.com/channel/UCqyrL5tKK4GH8OH4aN745uA"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://excaliber-cheats-pi.vercel.app/"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particle" style="top:90%; left:20%; animation-duration:12s;"></div>
+  <div class="particle" style="top:80%; left:50%; animation-duration:15s;"></div>
+  <div class="particle" style="top:95%; left:70%; animation-duration:18s;"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/was741.mp3" type="audio/mpeg">
+  </audio>
+
+ <script>
+  let playing = true; // start as ON (since music will autoplay off initially)
+  const music = document.getElementById("bg-music");
+  const icon = document.querySelector(".music-btn i");
+
+  // ensure music starts paused
+  music.pause();
+  icon.classList.replace("fa-volume-high", "fa-volume-xmark");
+
+  function toggleMusic() {
+    if (playing) {
+      music.pause();
+      icon.classList.replace("fa-volume-high", "fa-volume-xmark");
+    } else {
+      music.play();
+      icon.classList.replace("fa-volume-xmark", "fa-volume-high");
+    }
+    playing = !playing;
+  }
+</script>
+
+
+</body>
+</html>
